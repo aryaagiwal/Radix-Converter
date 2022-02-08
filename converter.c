@@ -90,17 +90,42 @@ int * convert_dec_to_n(int number[2], int new_base) {
 
 
 int main() {
-    printf("Enter a number:\n");
+    printf("What would you like to do?\n");
+    printf("1. Convert a non base 10 number to its base 10 form\n");
+    printf("2. Convert a number from base 10 to a base of your choice\n");
+    printf("3. Covert a non base 10 number to a base of your choice\n");
+    printf("Please pick an option (1, 2, or 3)");
+    int option = 0;
     int whole = 0;
     int frac = 0;
-    scanf("%d.%d", &whole, &frac);
-    printf("Enter a base:\n");
     int base = 0;
-    scanf("%d", &base);
-    int *num = convert_to_decimal(whole, frac, base);
-    printf("Enter a base to convert to:\n");
-    int new_base = 10;
-    scanf("%d",&new_base);
-    convert_dec_to_n(num, new_base);
+    scanf("%d", &option);
+    if (option > 3 || option < 1) {
+        printf("invalid response");
+    } else if (option == 1) {
+        printf("Enter a number:\n");
+        scanf("%d.%d", &whole, &frac);
+        printf("Enter its base:\n");
+        scanf("%d", &base);
+        printf("%d", convert_to_decimal(whole, frac, base));
+    } else if (option == 2) {
+        printf("Enter a base 10 number:\n");
+        scanf("%d.%d", &whole, &frac);
+        printf("Enter a base to convert to:\n");
+        int new_base = 10;
+        scanf("%d",&new_base);
+        int *num = convert_to_decimal(whole, frac, 10);
+        convert_dec_to_n(num, base);
+    } else {
+        printf("Enter a number:\n");
+        scanf("%d.%d", &whole, &frac);
+        printf("Enter its base:\n");
+        scanf("%d", &base);
+        int *num = convert_to_decimal(whole, frac, base);
+        printf("Enter a base to convert to:\n");
+        int new_base = 10;
+        scanf("%d",&new_base);
+        convert_dec_to_n(num, new_base);
+    }
     return EXIT_SUCCESS;
 }
