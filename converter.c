@@ -24,7 +24,6 @@ int * convert_to_decimal(int number, int frac, int radix, int dec) {
 }
 
 int * convert_dec_to_n(int num[2], int radix, int dec) {
-    //printf("%d",num[1]);
     int frac_portion = num[1];
     int new_whole = 0;
     int mult_factor = 1;
